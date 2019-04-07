@@ -2,7 +2,7 @@ const config = {
   runner: 'jest-runner-mocha',
   notifyMode: 'success-change',
   coveragePathIgnorePatterns: [
-    '/node_modules/', '**/src/', '**/lib/'
+    '/node_modules/', '**/src/', '**/lib/', '**/dist/'
   ],
   collectCoverage: true,
   coverageDirectory: './coverage/',

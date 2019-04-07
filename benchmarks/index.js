@@ -1,10 +1,15 @@
 const benchmark = require('benchmark')
-const keccakTinyAsync = require('../index')
+const keccakTinyAsync = require('../index').node
 const keccakjs = require('keccak')
 const obindings = require('sha3')
 const opurejs = require('js-sha3')
 
-keccakTinyAsync().then(function (keccakTiny) {
+keccakTinyAsync({
+  locateFile: function (path) {
+    // hard code the file path
+    return '../dist/87c77cd7d2807022f97bbeb1ab1e39b0.wasm'
+  }
+}).then(function (keccakTiny) {
   const emptyBuffer = new Buffer(0)
   new benchmark.Suite('Buffer 0bytes')
     .add('Keccak tiny (current)', () => keccakTiny.sha3_256(emptyBuffer).toString('hex'))
