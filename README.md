@@ -37,11 +37,26 @@ function locateFile(path) {
 
 * Hash message
 ```JS
-const keccakHashAsync = require('js-keccak-tiny')
-const msg = Buffer.from('it work!', 'utf8')
+// for nodejs
+const keccakHashAsync = require('js-keccak-tiny/dist/node-bundle')
+// or
+const keccakHashAsync = require('js-keccak-tiny').node
+
+// for browser
+const keccakHashAsync = require('js-keccak-tiny/dist/browser-bundle')
+// or
+const keccakHashAsync = require('js-keccak-tiny').browser
+
+const options = {
+  locateFile: function (path) {
+    return 'file path to *.wasm'
+  }
+}
+
+const msg = Buffer.from('It works!', 'utf8')
 
 // initialize the library
-keccakTiny = await keccakHashAsync()
+keccakTiny = await keccakHashAsync(options)
 
 let hash = keccakTiny.keccak256(msg)
 // do something to hash...
