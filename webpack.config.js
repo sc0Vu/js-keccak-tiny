@@ -16,10 +16,7 @@ const nodeConfig = {
       {
         test: /keccak-tiny-node\.wasm$/,
         type: "javascript/auto",
-        loader: "file-loader",
-        options: {
-          publicPath: "dist/"
-        }
+        loader: "wasm-loader",
       }
     ]
   }
@@ -42,10 +39,7 @@ const browserConfig = {
       {
         test: /keccak-tiny-browser\.wasm$/,
         type: "javascript/auto",
-        loader: "file-loader",
-        options: {
-          publicPath: "dist/"
-        }
+        loader: "wasm-loader",
       }
     ]
   }

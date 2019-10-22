@@ -2,16 +2,15 @@ const KeccakTinyWasm = require('./lib/keccak-tiny-node.wasm')
 const Keccak = require('./lib/keccak-tiny-node.js')
 const isBuffer = require('is-buffer')
 
-module.exports = function (options) {
-  defaultOptions = {
-    locateFile: function (path) {
-      if(path.endsWith('.wasm')) {
-        return KeccakTinyWasm
-      }
-      return path
+module.exports = function () {
+  options = {
+    instantiateWasm: function (info, successCallback) {
+      return KeccakTinyWasm(info)
+              .then(function (i) {
+                return successCallback(i.instance)
+              })
     }
   }
-  options = Object.assign(defaultOptions, options)
   return new Promise(function (resolve, reject) {
     Keccak(options).then(function (k) {
       let keccakTiny = {}
