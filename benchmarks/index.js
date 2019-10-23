@@ -4,13 +4,8 @@ const keccakjs = require('keccak')
 const obindings = require('sha3')
 const opurejs = require('js-sha3')
 
-keccakTinyAsync({
-  locateFile: function (path) {
-    // hard code the file path
-    return '../dist/87c77cd7d2807022f97bbeb1ab1e39b0.wasm'
-  }
-}).then(function (keccakTiny) {
-  const emptyBuffer = new Buffer(0)
+keccakTinyAsync().then(function (keccakTiny) {
+  const emptyBuffer = new Buffer.from([])
   new benchmark.Suite('Buffer 0bytes')
     .add('Keccak tiny (current)', () => keccakTiny.sha3_256(emptyBuffer).toString('hex'))
     .add('Pure JS (keccak)', () => keccakjs('sha3-256').update(emptyBuffer).digest('hex'))
