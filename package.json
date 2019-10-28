@@ -14,9 +14,11 @@
   "devDependencies": {
     "exports-loader": "^0.7.0",
     "file-loader": "^3.0.1",
+    "geckodriver": "^1.19.0",
     "jest": "^24.5.0",
     "jest-runner-mocha": "^0.6.0",
     "keccak": "^2.0.0",
+    "selenium-webdriver": "^4.0.0-alpha.5",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
   },

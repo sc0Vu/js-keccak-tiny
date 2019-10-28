@@ -3,6 +3,8 @@ os:
   - linux
   - osx
 language: node_js
+addons:
+  firefox: latest
 node_js:
   - "8"
   - "10"

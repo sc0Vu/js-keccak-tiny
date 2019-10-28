@@ -27,7 +27,8 @@ const browserConfig = {
   context: path.resolve(__dirname, "."),
   entry: "./index-browser.js",
   output: {
-    libraryTarget: 'commonjs2',
+    library: 'KECCAK',
+    libraryTarget: 'var',
     path: path.resolve(__dirname, "dist"),
     filename: "browser-bundle.js"
   },

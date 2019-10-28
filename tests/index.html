@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Keccak tiny test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha3/0.8.0/sha3.min.js" integrity="sha256-8MpIdXZrWpb1JXVJccjsXDKzvX927WNtletZ0/Ny3oQ=" crossorigin="anonymous"></script>
+    <script src="../dist/browser-bundle.js"></script>
+  </head>
+  <body>
+    <script>
+      let success = true
+      KECCAK()
+        .then(function (keccakTiny) {
+          let msg = 'helloworld'
+          window.keccakTiny = keccakTiny
+          let hashAlgos = Object.keys(keccakTiny.hashAlgos)
+
+          for (let i = 0; i < hashAlgos.length; i++) {
+            let hashName = hashAlgos[i]
+            var hash1 = keccakTiny[hashName].call(keccakTiny, msg).toString('hex')
+            var hash2 = (/^shake/i.test(hashName)) ? window[hashName](msg, keccakTiny.hashAlgos[hashName].length * 8) : window[hashName](msg)
+            if (hash2 !== hash1) {
+              success = false
+              break
+            }
+          }
+        })
+        .catch(function (err) {
+          success = false
+        })
+        .then(function () {
+          if (success) {
+            document.title += ' succed'
+          }
+        })
+    </script>
+  </body>
+</html>
