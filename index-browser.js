@@ -13,6 +13,7 @@ module.exports = function (options) {
   }
   return new Promise(function (resolve, reject) {
     Keccak(options).then(function (k) {
+      console.log(k)
       let keccakTiny = {}
       keccakTiny.hashAlgos = {
         shake128: {
