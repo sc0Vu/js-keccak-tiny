@@ -12,6 +12,20 @@ Keccak tiny implementation in javascript.
 $ npm install js-keccak-tiny
 ```
 
+# Build with emscripten
+
+You can build keccak-tiny wasm yourself with emscripten. We build two version of keccak-tiny - node and web. The only difference is that there is no file system in web version.
+
+```BASH
+$ sh build.sh
+```
+
+After build wasm files, you should build javascript library again.
+
+```BASH
+$ npm run build
+```
+
 # Usage
 
 * Hash message
