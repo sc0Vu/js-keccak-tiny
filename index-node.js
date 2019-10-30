@@ -77,8 +77,9 @@ module.exports = function () {
         this.k.HEAP8.set(msg, msgMem)
         let res = hashFunc(hashMem, hashLen, msgMem, msgLen)
         if (res === -1) {
+          this.k._free(hashMem)
+          this.k._free(msgMem)
           throw new Error('Hash failed.')
-          return
         }
         for (var i=0; i<hashLen; i++) {
           var v = this.k.getValue(hashMem + i, 'i8')
@@ -86,6 +87,7 @@ module.exports = function () {
         }
         // free memory
         this.k._free(hashMem)
+        this.k._free(msgMem)
         return Buffer.from(hash)
       }
       Object.keys(keccakTiny.hashAlgos).forEach(function (hashAlgoName) {
