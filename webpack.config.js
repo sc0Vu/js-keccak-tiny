@@ -1,5 +1,6 @@
 const webpack = require("webpack")
 const path = require("path")
+const UglifyPlugin = require('uglifyjs-webpack-plugin')
 
 const nodeConfig = {
   mode: "development",
@@ -43,6 +44,16 @@ const browserConfig = {
         loader: "wasm-loader",
       }
     ]
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [new UglifyPlugin({
+      uglifyOptions: {
+        output: {
+          comments: false,
+        },
+      },
+    })],
   }
 }
 
