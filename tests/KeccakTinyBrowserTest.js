@@ -19,7 +19,7 @@ describe('KeccakTinyTest', function () {
     try {
       const url = `file://${path.join(__dirname, 'index.html')}`
       await driver.get(url)
-      await driver.wait(until.titleIs('Keccak tiny test succed'), 5000);
+      await driver.wait(until.titleIs('Keccak tiny test succed'), 10000);
       assert(true)
     } catch (err) {
       assert(false)
