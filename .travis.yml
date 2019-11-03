@@ -11,4 +11,4 @@ node_js:
   - "11"
 
 after_success:
-  - codecov --token=7cfd27d4-0b28-4038-86fb-219ecb5ac31a
+  - bash <(curl -s https://codecov.io/bash) --token=7cfd27d4-0b28-4038-86fb-219ecb5ac31a
