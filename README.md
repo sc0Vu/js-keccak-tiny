@@ -32,13 +32,9 @@ $ npm run build
 ```JS
 // for nodejs
 const keccakHashAsync = require('js-keccak-tiny/dist/node-bundle')
-// or
-const keccakHashAsync = require('js-keccak-tiny').node
 
 // for browser
 const keccakHashAsync = require('js-keccak-tiny/dist/browser-bundle')
-// or
-const keccakHashAsync = require('js-keccak-tiny').browser
 
 const msg = Buffer.from('It works!', 'utf8')
 
