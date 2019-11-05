@@ -1,5 +1,5 @@
 const benchmark = require('benchmark')
-const keccakTinyAsync = require('../index').node
+const keccakTinyAsync = require('../dist/node-bundle')
 const keccakjs = require('keccak')
 const obindings = require('sha3')
 const opurejs = require('js-sha3')
