@@ -10,13 +10,8 @@ EMCC_OPTIONS=(
     -s STRICT=1
 )
 
-EMCC_NODE_OPTIONS=(
-    -s ENVIRONMENT=node
-    -s NO_FILESYSTEM=0
-)
-
 EMCC_WEB_OPTIONS=(
-    -s ENVIRONMENT=web
+    # -s ENVIRONMENT=web
     -s NO_FILESYSTEM=1
 )
 
@@ -31,7 +26,5 @@ EMCC_WASM_OPTIONS=(
     -s BINARYEN_TRAP_MODE="clamp"
 )
 
-echo "Build keccak tiny for browser"
-emcc "${EMCC_OPTIONS[@]}" "${EMCC_WEB_OPTIONS[@]}" "${EMCC_KECCAK_OPTIONS[@]}" "${EMCC_WASM_OPTIONS[@]}" nim-keccak-tiny/keccak_tiny/keccak-tiny.c -o lib/keccak-tiny-browser.js
-echo "Build keccak tiny for nodejs"
-emcc "${EMCC_OPTIONS[@]}" "${EMCC_NODE_OPTIONS[@]}" "${EMCC_KECCAK_OPTIONS[@]}" "${EMCC_WASM_OPTIONS[@]}" nim-keccak-tiny/keccak_tiny/keccak-tiny.c -o lib/keccak-tiny-node.js
+echo "Build keccak tiny"
+emcc "${EMCC_OPTIONS[@]}" "${EMCC_WEB_OPTIONS[@]}" "${EMCC_KECCAK_OPTIONS[@]}" "${EMCC_WASM_OPTIONS[@]}" nim-keccak-tiny/keccak_tiny/keccak-tiny.c -o lib/keccak-tiny.js

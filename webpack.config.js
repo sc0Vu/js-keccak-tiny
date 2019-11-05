@@ -1,9 +1,8 @@
 const webpack = require("webpack")
 const path = require("path")
-const UglifyPlugin = require('uglifyjs-webpack-plugin')
-
+const nodeEnv = process.env.NODE_ENV
 const nodeConfig = {
-  mode: "development",
+  mode: nodeEnv,
   target: 'node',
   context: path.resolve(__dirname, "."),
   entry: "./index-node.js",
@@ -15,7 +14,7 @@ const nodeConfig = {
   module: {
     rules: [
       {
-        test: /keccak-tiny-node\.wasm$/,
+        test: /keccak-tiny\.wasm$/,
         type: "javascript/auto",
         loader: "wasm-loader",
       }
@@ -23,7 +22,7 @@ const nodeConfig = {
   }
 }
 const browserConfig = {
-  mode: "development",
+  mode: nodeEnv,
   target: 'web',
   context: path.resolve(__dirname, "."),
   entry: "./index-browser.js",
@@ -31,7 +30,7 @@ const browserConfig = {
     library: 'KECCAK',
     libraryTarget: 'var',
     path: path.resolve(__dirname, "dist"),
-    filename: "browser-bundle.js"
+    filename: "bundle.js"
   },
   node: {
     fs: 'empty'
@@ -39,21 +38,11 @@ const browserConfig = {
   module: {
     rules: [
       {
-        test: /keccak-tiny-browser\.wasm$/,
+        test: /keccak-tiny\.wasm$/,
         type: "javascript/auto",
         loader: "wasm-loader",
       }
     ]
-  },
-  optimization: {
-    minimize: true,
-    minimizer: [new UglifyPlugin({
-      uglifyOptions: {
-        output: {
-          comments: false,
-        },
-      },
-    })],
   }
 }
 

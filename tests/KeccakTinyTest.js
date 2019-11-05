@@ -1,6 +1,5 @@
 const assert = require('assert')
-const keccakAsync = require('../index').node
-// const keccakAsync = require('../dist/node-bundle.js')
+const keccakAsync = require('../dist/node-bundle')
 const keccakHash = require('keccak')
 
 describe('KeccakTinyTest', function () {
