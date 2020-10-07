@@ -23,7 +23,7 @@ EMCC_KECCAK_OPTIONS=(
 EMCC_WASM_OPTIONS=(
     -s WASM=1
     -s BINARYEN_IGNORE_IMPLICIT_TRAPS=1
-    -s BINARYEN_TRAP_MODE="clamp"
+    -mnontrapping-fptoint
 )
 
 echo "Build keccak tiny"
