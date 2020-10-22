@@ -5,7 +5,7 @@ const nodeConfig = {
   mode: nodeEnv,
   target: 'node',
   context: path.resolve(__dirname, "."),
-  entry: "./index-node.js",
+  entry: "./index.js",
   output: {
     libraryTarget: 'commonjs2',
     path: path.resolve(__dirname, "dist"),
@@ -25,7 +25,7 @@ const browserConfig = {
   mode: nodeEnv,
   target: 'web',
   context: path.resolve(__dirname, "."),
-  entry: "./index-browser.js",
+  entry: "./index.js",
   output: {
     library: 'KECCAK',
     libraryTarget: 'var',
