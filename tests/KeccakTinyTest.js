@@ -20,8 +20,16 @@ describe('KeccakTinyTest', function () {
       } else {
         hash2 = hash2.digest('hex')
       }
-      assert.equal(hash2, hash1)
+      assert.strictEqual(hash2.toString('hex'), hash1.toString('hex'))
     })
+    done()
+  })
+
+  it ('Shoud malloc and free', function (done) {
+    const testBuf = Buffer.from('helloworld')
+    const mem = keccakTiny.malloc(testBuf, testBuf.length)
+    const testBuf2 = keccakTiny.toBuffer(mem, testBuf.length)
+    assert.strictEqual(testBuf.toString('hex'), testBuf2.toString('hex'))
     done()
   })
 })

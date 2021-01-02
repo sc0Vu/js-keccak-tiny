@@ -24,7 +24,8 @@ describe('KeccakTinyTest', function () {
     } catch (err) {
       assert(false)
     } finally {
-      return driver.quit()
+      await driver.quit()
+      return
     }
   })
 })
