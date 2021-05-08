@@ -13,8 +13,14 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 12
-      - run: npm install
-      - run: npm test
+      - run: |
+          wget https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux32.tar.gz
+          tar -xvzf geckodriver-v0.24.0-linux32.tar.gz
+          chmod +x geckodriver
+          echo "PATH=$PWD:$PATH" >> $GITHUB_ENV
+          which geckodriver
+          npm install
+          npm test
 
 #   publish-npm:
 #     needs: build
