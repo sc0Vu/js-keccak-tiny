@@ -1,5 +1,5 @@
 # js-keccak-tiny
-[![Build Status](https://travis-ci.org/sc0Vu/js-keccak-tiny.svg?branch=master)](https://travis-ci.org/sc0Vu/js-keccak-tiny)
+[![CI](https://github.com/sc0Vu/js-keccak-tiny/actions/workflows/ci.yml/badge.svg)](https://github.com/sc0Vu/js-keccak-tiny/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/sc0Vu/js-keccak-tiny/branch/master/graph/badge.svg)](https://codecov.io/gh/sc0Vu/js-keccak-tiny)
 
 Keccak tiny wasm binding in javascript.
